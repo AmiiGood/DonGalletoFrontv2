@@ -17,7 +17,7 @@ export class CookieFormComponent implements OnInit {
   stockError = '';
   actualUnits = 0;
 
-  constructor(private fb: FormBuilder, private galletaService: GalletaService) {
+  constructor(private fb: FormBuilder) {
     this.cookieForm = this.fb.group({
       cookie: ['', Validators.required],
       saleType: ['unit', Validators.required],
@@ -130,27 +130,20 @@ export class CookieFormComponent implements OnInit {
     }
   }
 
-  async submitForm() {
+  submitForm() {
     if (this.cookieForm.valid && !this.stockError) {
       const formValue = this.cookieForm.value;
-      try {
-        await this.galletaService
-          .updateStock(formValue.cookie.id, -this.actualUnits)
-          .toPromise();
 
-        this.addToCart.emit({
-          cookie: formValue.cookie,
-          quantity: formValue.quantity,
-          saleType: formValue.saleType,
-          subtotal: this.subtotal,
-          actualUnits: this.actualUnits,
-        });
+      this.addToCart.emit({
+        cookie: formValue.cookie,
+        quantity: formValue.quantity,
+        saleType: formValue.saleType,
+        subtotal: this.subtotal,
+        actualUnits: this.actualUnits,
+      });
 
-        this.cookieForm.patchValue({ quantity: 1 });
-        this.updatePrice();
-      } catch (error) {
-        console.error('Error updating stock:', error);
-      }
+      this.cookieForm.patchValue({ quantity: 1 });
+      this.updatePrice();
     }
   }
 
