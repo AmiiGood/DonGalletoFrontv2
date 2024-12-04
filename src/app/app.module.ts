@@ -14,6 +14,7 @@ import { CookieShopComponent } from './components/cookie-shop/cookie-shop.compon
 import { CookieFormComponent } from './components/cookie-form/cookie-form.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { GalletasTablaComponent } from './components/galletas-tabla/galletas-tabla.component';
+import { SalesTablaComponent } from './components/sales-tabla/sales-tabla.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { GalletasTablaComponent } from './components/galletas-tabla/galletas-tab
     CookieFormComponent,
     ShoppingCartComponent,
     GalletasTablaComponent,
+    SalesTablaComponent,
   ],
   imports: [
     BrowserModule,

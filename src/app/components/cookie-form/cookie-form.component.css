@@ -54,6 +54,20 @@ button[mat-flat-button] {
   letter-spacing: 0.5px;
 }
 
+.custom-button {
+  background-color: #ff9800 !important;
+  color: white !important;
+}
+
+.custom-button:hover:not([disabled]) {
+  background-color: #ffa726 !important;
+}
+
+.custom-button[disabled] {
+  background-color: rgba(255, 152, 0, 0.3) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
 @media (max-width: 768px) {
   .cookie-form-container {
     padding: 1.5rem;

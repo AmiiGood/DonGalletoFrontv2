@@ -1,0 +1,143 @@
+/* sales-tabla.component.css */
+.table-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-actions {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+th.mat-header-cell {
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 1rem;
+  background: #f7fafc;
+  border: none;
+}
+
+td.mat-cell {
+  padding: 1rem;
+  border: none;
+  font-size: 0.875rem;
+}
+
+tr.mat-row {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+tr.mat-row:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.total-column {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* Estilos para las filas expandibles */
+tr.detail-row {
+  height: 0;
+}
+
+.sale-row td {
+  border-bottom-width: 0;
+}
+
+.sale-detail {
+  overflow: hidden;
+}
+
+.detail-content {
+  padding: 1rem 2rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.detail-content h3 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detail-table th,
+.detail-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.detail-table th {
+  background: #edf2f7;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.detail-table tr:last-child td {
+  border-bottom: none;
+}
+
+:host ::ng-deep .mat-paginator {
+  background: transparent;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 1rem;
+}
+
+tr.expanded-row {
+  background: #f8fafc;
+}
+
+/* Agregar a los estilos existentes */
+.item-count {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.count-icon {
+  color: #718096;
+  font-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+button[mat-flat-button] {
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.custom-button {
+  background-color: #ff9800 !important;
+  color: white !important;
+}
+
+.custom-button:hover:not([disabled]) {
+  background-color: #ffa726 !important;
+}
+
+.custom-button[disabled] {
+  background-color: rgba(255, 152, 0, 0.3) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}

@@ -41,7 +41,7 @@
       <div class="subtotal">Subtotal: ${{ subtotal | number : "1.2-2" }}</div>
       <button
         mat-flat-button
-        color="primary"
+        class="custom-button"
         [disabled]="!cookieForm.valid || subtotal <= 0"
       >
         Agregar al carrito

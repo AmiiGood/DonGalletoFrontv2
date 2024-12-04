@@ -90,3 +90,15 @@ tr.mat-row:hover {
   border-top: 1px solid #e2e8f0;
   margin-top: 1rem;
 }
+
+::ng-deep .mat-warn .mat-slide-toggle-bar {
+  background-color: rgba(255, 152, 0, 0.5) !important;
+}
+
+::ng-deep .mat-warn.mat-checked .mat-slide-toggle-bar {
+  background-color: rgba(255, 152, 0, 0.5) !important;
+}
+
+::ng-deep .mat-warn.mat-checked .mat-slide-toggle-thumb {
+  background-color: #ff9800 !important;
+}

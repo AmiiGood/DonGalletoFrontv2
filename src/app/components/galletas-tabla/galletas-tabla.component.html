@@ -1,6 +1,10 @@
 <div class="table-container">
   <div class="table-header">
-    <mat-slide-toggle [(ngModel)]="showAllCookies" (change)="loadCookies()">
+    <mat-slide-toggle
+      color="warn"
+      [(ngModel)]="showAllCookies"
+      (change)="loadCookies()"
+    >
       Mostrar galletas de todas las tiendas
     </mat-slide-toggle>
   </div>
