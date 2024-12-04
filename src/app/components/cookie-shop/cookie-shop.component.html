@@ -1,0 +1,14 @@
+<div class="shop-container">
+  <div class="cookie-form">
+    <app-cookie-form [cookies]="cookies" (addToCart)="addToCart($event)">
+    </app-cookie-form>
+  </div>
+  <div class="shopping-cart">
+    <app-shopping-cart
+      [cartItems]="cartItems"
+      (removeItem)="removeFromCart($event)"
+      (checkout)="processCheckout()"
+    >
+    </app-shopping-cart>
+  </div>
+</div>

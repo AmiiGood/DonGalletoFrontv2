@@ -1,0 +1,92 @@
+.table-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+  margin-bottom: 1.5rem;
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+th.mat-header-cell {
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 1rem;
+  background: #f7fafc;
+  border: none;
+}
+
+td.mat-cell {
+  padding: 1rem;
+  border: none;
+  font-size: 0.875rem;
+}
+
+tr.mat-row {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+tr.mat-row:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-existencia {
+  background: #def7ec;
+  color: #046c4e;
+}
+
+.status-agotado {
+  background: #fde8e8;
+  color: #c81e1e;
+}
+
+.stock-low {
+  color: #c81e1e;
+}
+
+.stock-medium {
+  color: #c27803;
+}
+
+.stock-high {
+  color: #046c4e;
+}
+
+.price-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.price-item {
+  padding: 0.25rem 0.5rem;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+:host ::ng-deep .mat-paginator {
+  background: transparent;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 1rem;
+}

@@ -1,0 +1,37 @@
+<mat-card class="shopping-cart">
+  <mat-card-header class="cart-header">
+    <mat-card-title>Mi Ticket de Compra</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="cart-content">
+    <mat-list class="cart-items">
+      <mat-list-item *ngFor="let item of cartItems; let i = index">
+        <div class="cart-item">
+          <span class="item-name">{{ item.cookie.name }}</span>
+          <span class="item-quantity"
+            >{{ item.quantity }} {{ getSaleTypeLabel(item.saleType) }}</span
+          >
+          <span class="item-price"
+            >${{ item.subtotal | number : "1.2-2" }}</span
+          >
+          <button
+            mat-icon-button
+            class="delete-button"
+            (click)="removeItem.emit(i)"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+    <div class="cart-total">TOTAL: ${{ getTotal() | number : "1.2-2" }}</div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="checkout-button"
+      [disabled]="!cartItems.length"
+      (click)="checkout.emit()"
+    >
+      Comprar
+    </button>
+  </mat-card-content>
+</mat-card>

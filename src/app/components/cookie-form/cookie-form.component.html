@@ -1,0 +1,51 @@
+<div class="cookie-form-container">
+  <h2 class="form-title">Selecciona tu galleta</h2>
+  <form [formGroup]="cookieForm" (ngSubmit)="submitForm()" class="modern-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Galleta</mat-label>
+      <mat-select formControlName="cookie">
+        <mat-option *ngFor="let cookie of availableCookies" [value]="cookie">
+          <div class="cookie-option">
+            <span class="cookie-name">{{ cookie.name }}</span>
+            <span class="cookie-stock">Stock: {{ cookie.stock }}</span>
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo de venta</mat-label>
+      <mat-select formControlName="saleType" (selectionChange)="updatePrice()">
+        <mat-option value="unit">Por unidad</mat-option>
+        <mat-option value="weight">Por peso (g)</mat-option>
+        <mat-option value="package500">Paquete 500g</mat-option>
+        <mat-option value="package1000">Paquete 1000g</mat-option>
+        <mat-option value="amount">Monetario ($)</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ getQuantityLabel() }}</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="quantity"
+        (input)="updatePrice()"
+      />
+    </mat-form-field>
+    <mat-error *ngIf="stockError" class="stock-error">
+      {{ stockError }}
+    </mat-error>
+
+    <div class="form-footer">
+      <div class="subtotal">Subtotal: ${{ subtotal | number : "1.2-2" }}</div>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!cookieForm.valid || subtotal <= 0"
+      >
+        Agregar al carrito
+      </button>
+    </div>
+  </form>
+</div>

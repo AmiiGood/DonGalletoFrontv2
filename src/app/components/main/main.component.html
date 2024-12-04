@@ -1,0 +1,39 @@
+<div class="layout-wrapper">
+  <mat-sidenav-container autosize>
+    <mat-sidenav
+      #sidenav
+      [mode]="'side'"
+      [opened]="true"
+      class="sidebar"
+      [class.collapsed]="!isExpanded"
+      [fixedInViewport]="false"
+    >
+      <div class="sidebar-header">
+        <button mat-icon-button (click)="toggleSidebar()" class="toggle-btn">
+          <mat-icon>{{
+            isExpanded ? "chevron_left" : "chevron_right"
+          }}</mat-icon>
+        </button>
+      </div>
+      <mat-nav-list>
+        <a
+          mat-list-item
+          *ngFor="let item of menuItems"
+          [routerLink]="item.route"
+          routerLinkActive="active-link"
+          [title]="!isExpanded ? item.label : ''"
+        >
+          <mat-icon class="menu-icon">{{ item.icon }}</mat-icon>
+          <span class="menu-text" [class.hidden]="!isExpanded">{{
+            item.label
+          }}</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content-area">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

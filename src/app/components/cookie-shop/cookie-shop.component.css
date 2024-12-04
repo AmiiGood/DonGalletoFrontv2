@@ -1,0 +1,9 @@
+.shop-container {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+}
+.cookie-form,
+.shopping-cart {
+  flex: 1;
+}
