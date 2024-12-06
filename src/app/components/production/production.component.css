@@ -1,0 +1,133 @@
+.production-container {
+  padding: 24px;
+}
+
+.stages-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.stage {
+  flex: 1;
+  min-width: 280px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.stage h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.stage-list {
+  min-height: 400px;
+  border-radius: 8px;
+  padding: 16px;
+  border: 3px dashed #cbd5e1;
+  background: linear-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.stage-list:empty::after {
+  content: "Arrastra aquí";
+  color: #94a3b8;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.stage-item {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  cursor: move;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stage-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.4;
+  background: #e2e8f0;
+  border: 2px dashed #64748b;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+#preparacion:not(:empty) {
+  border-color: #818cf8;
+}
+#horneado:not(:empty) {
+  border-color: #fb923c;
+}
+#enfriamiento:not(:empty) {
+  border-color: #38bdf8;
+}
+#lista:not(:empty) {
+  border-color: #4ade80;
+}
+
+@media (max-width: 1200px) {
+  .stages-container {
+    flex-wrap: wrap;
+  }
+
+  .stage {
+    flex: 0 0 calc(50% - 12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .stages-container {
+    flex-direction: column;
+  }
+
+  .stage {
+    width: 100%;
+  }
+}
+
+.confirmation-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* Opcional: agregar un overlay */
+.confirmation-dialog::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}

@@ -18,6 +18,6 @@ export const MenuItems: MenuInterface[] = [
   {
     label: 'Producción',
     icon: 'factory',
-    route: ['/produccion'],
+    route: ['/production'],
   },
 ];

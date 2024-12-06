@@ -83,25 +83,24 @@ export class CookieFormComponent implements OnInit {
       return;
     }
 
+    // Calcular unidades usando el método existente
+    this.actualUnits = this.calculateUnitsNeeded(quantity, cookie, saleType);
+
+    // Calcular subtotal
     switch (saleType) {
       case 'weight':
-        this.actualUnits = Math.ceil(quantity / cookie.weightPerUnit);
         this.subtotal = quantity * cookie.price.pricePerGram;
         break;
       case 'amount':
-        this.actualUnits = Math.ceil(quantity / cookie.price.unit);
         this.subtotal = quantity;
         break;
-      case 'package500':
-        this.actualUnits = Math.ceil(500 / cookie.weightPerUnit) * quantity;
+      case 'package_500':
         this.subtotal = quantity * cookie.price.package500g;
         break;
-      case 'package1000':
-        this.actualUnits = Math.ceil(1000 / cookie.weightPerUnit) * quantity;
+      case 'package_1000':
         this.subtotal = quantity * cookie.price.package1000g;
         break;
-      default:
-        this.actualUnits = quantity;
+      default: // unit
         this.subtotal = quantity * cookie.price.unit;
     }
 
@@ -157,11 +156,11 @@ export class CookieFormComponent implements OnInit {
         return Math.ceil(quantity / cookie.weightPerUnit);
       case 'amount':
         return Math.ceil(quantity / cookie.price.unit);
-      case 'package500':
-        return Math.ceil(500 / cookie.weightPerUnit);
-      case 'package1000':
-        return Math.ceil(1000 / cookie.weightPerUnit);
-      default:
+      case 'package_500':
+        return Math.ceil(500 / cookie.weightPerUnit) * quantity;
+      case 'package_1000':
+        return Math.ceil(1000 / cookie.weightPerUnit) * quantity;
+      default: // unit
         return quantity;
     }
   }

@@ -39,8 +39,12 @@
 
 .cart-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto auto;
-  gap: 1rem;
+  /* Ajustamos las columnas para garantizar espacio mínimo */
+  grid-template-columns: minmax(100px, 1fr) minmax(80px, auto) minmax(
+      80px,
+      auto
+    ) 40px;
+  gap: 0.5rem;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #eee;
   font-family: "Courier New", monospace;
@@ -52,16 +56,37 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0; /* Importante para que funcione text-overflow */
 }
 
 .item-quantity {
-  text-align: right;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9em; /* Reducimos ligeramente el tamaño */
+  flex-wrap: wrap; /* Permitimos que se envuelva si es necesario */
+  min-width: 0;
+}
+
+.units-info {
+  font-size: 0.85em;
   color: #666;
+  margin-left: 5px;
+  white-space: nowrap;
 }
 
 .item-price {
   text-align: right;
-  min-width: 80px;
+  min-width: 70px;
+  white-space: nowrap;
+}
+
+.delete-button {
+  color: #ff4444;
+  margin-left: auto; /* Asegura que el botón se mantenga a la derecha */
+  min-width: 32px !important; /* Asegura un tamaño mínimo */
+  padding: 0 !important;
+  height: 32px !important;
 }
 
 .cart-total {
@@ -90,8 +115,4 @@
 .checkout-button[disabled] {
   background-color: rgba(255, 152, 0, 0.3) !important;
   color: rgba(255, 255, 255, 0.5) !important;
-}
-
-.delete-button {
-  color: #ff4444;
 }

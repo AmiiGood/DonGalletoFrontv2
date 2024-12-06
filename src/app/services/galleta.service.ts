@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { Cookie } from '../interfaces/galleta/cookie';
 import { SaleItem } from '../interfaces/venta/cart-item';
 
@@ -42,5 +42,34 @@ export class GalletaService {
     return this.http.patch(`${this.apiUrl}cookie/${cookieId}/stock`, {
       quantity,
     });
+  }
+
+  updateCookieStatus(cookieId: number, status: string): Observable<any> {
+    const url = `${this.apiUrl}cookie/${cookieId}/status`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    console.log(`Sending PATCH request to ${url} with status: ${status}`);
+
+    return this.http.patch(url, { status }, { headers }).pipe(
+      tap((response) => console.log('Server response:', response)),
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.error('An error occurred:', error);
+    if (error.error instanceof ErrorEvent) {
+      // Error del lado del cliente
+      console.error('Client side error:', error.error.message);
+    } else {
+      // Error del lado del servidor
+      console.error(
+        `Backend returned code ${error.status}, ` +
+          `body was: ${JSON.stringify(error.error)}`
+      );
+    }
+    return throwError(() => error);
   }
 }

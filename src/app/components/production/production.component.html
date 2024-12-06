@@ -1,0 +1,102 @@
+<div class="production-container">
+  <div class="stages-container">
+    <div class="stage">
+      <h3>Preparación</h3>
+      <div
+        cdkDropList
+        #preparacionList="cdkDropList"
+        [cdkDropListData]="preparacion"
+        [cdkDropListConnectedTo]="[horneadoList]"
+        class="stage-list"
+        id="preparacion"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="stage-item" *ngFor="let item of preparacion" cdkDrag>
+          <h4>{{ item.name }}</h4>
+          <p class="description">{{ item.description }}</p>
+          <div class="cookie-details">
+            <span class="price">Precio: ${{ item.price?.unit }}</span>
+            <span class="stock">Stock: {{ item.stock }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stage">
+      <h3>Horneado</h3>
+      <div
+        cdkDropList
+        #horneadoList="cdkDropList"
+        [cdkDropListData]="horneado"
+        [cdkDropListConnectedTo]="[preparacionList, enfriamientoList]"
+        class="stage-list"
+        id="horneado"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="stage-item" *ngFor="let item of horneado" cdkDrag>
+          <h4>{{ item.name }}</h4>
+          <p class="description">{{ item.description }}</p>
+          <div class="cookie-details">
+            <span class="price">Precio: ${{ item.price?.unit }}</span>
+            <span class="stock">Stock: {{ item.stock }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stage">
+      <h3>Enfriamiento</h3>
+      <div
+        cdkDropList
+        #enfriamientoList="cdkDropList"
+        [cdkDropListData]="enfriamiento"
+        [cdkDropListConnectedTo]="[horneadoList, listaList]"
+        class="stage-list"
+        id="enfriamiento"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="stage-item" *ngFor="let item of enfriamiento" cdkDrag>
+          <h4>{{ item.name }}</h4>
+          <p class="description">{{ item.description }}</p>
+          <div class="cookie-details">
+            <span class="price">Precio: ${{ item.price?.unit }}</span>
+            <span class="stock">Stock: {{ item.stock }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stage">
+      <h3>Lista</h3>
+      <div
+        cdkDropList
+        #listaList="cdkDropList"
+        [cdkDropListData]="lista"
+        [cdkDropListConnectedTo]="[enfriamientoList]"
+        class="stage-list"
+        id="lista"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="stage-item" *ngFor="let item of lista" cdkDrag>
+          <h4>{{ item.name }}</h4>
+          <p class="description">{{ item.description }}</p>
+          <div class="cookie-details">
+            <span class="price">Precio: ${{ item.price?.unit }}</span>
+            <span class="stock">Stock: {{ item.stock }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Template del diálogo -->
+<ng-template #confirmDialog>
+  <h2 matDialogTitle>Confirmar finalización</h2>
+  <mat-dialog-content>
+    ¿Estás seguro de que esta galleta está lista?
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button matDialogClose>Cancelar</button>
+    <button mat-button color="primary" [matDialogClose]="true">
+      Confirmar
+    </button>
+  </mat-dialog-actions>
+</ng-template>

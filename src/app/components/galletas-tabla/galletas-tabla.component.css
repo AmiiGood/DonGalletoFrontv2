@@ -102,3 +102,27 @@ tr.mat-row:hover {
 ::ng-deep .mat-warn.mat-checked .mat-slide-toggle-thumb {
   background-color: #ff9800 !important;
 }
+
+.production-actions {
+  margin-top: 16px;
+  text-align: right;
+}
+
+/* Estilos para el botón de producción */
+.production-button {
+  background-color: #ff9800 !important;
+  color: white !important;
+}
+
+.production-button:hover {
+  background-color: #f57c00 !important;
+}
+
+.production-button:disabled {
+  background-color: rgba(255, 152, 0, 0.5) !important;
+}
+
+.production-actions {
+  margin-top: 16px;
+  text-align: right;
+}
